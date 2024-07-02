@@ -1,10 +1,9 @@
-# Usa la imagen base balenalib
-FROM balenalib/aarch64-alpine-node:20240429
+FROM node:18-alpine
 
 # Establece el directorio de trabajo
 WORKDIR /app
 
-# Copia el package.json y el package-lock.json (si existe)
+# Copia los archivos de package.json y package-lock.json
 COPY package*.json ./
 
 # Instala las dependencias
@@ -13,11 +12,12 @@ RUN npm install
 # Copia el resto de los archivos de la aplicación
 COPY . .
 
-# Expon el puerto de la aplicación
+# Expone el puerto de la aplicación
 EXPOSE 3000
 
-# Comando para ejecutar la aplicación
-CMD ["node", "app.js"]
+# Define el comando de inicio
+CMD ["npm", "start"]
+
 
 
 
