@@ -1,12 +1,16 @@
-# Usa la imagen oficial de nginx:alpine
-FROM nginx
+# Usa la imagen oficial d3fk/https-redirect
+FROM d3fk/https-redirect:latest
 
-# Copia el archivo index.html al directorio de trabajo en la imagen
-COPY index.html /usr/share/nginx/html/
+# Establece las variables de entorno necesarias para la redirección
+ENV REDIRECT_FROM="http://*:*" \
+    REDIRECT_TO="https://yourdomain.com"
 
-# Puerto en el que escuchará Nginx
+# Expone el puerto 80 para HTTP
 EXPOSE 80
 
-# Comando para iniciar Nginx cuando se ejecute el contenedor
-CMD ["nginx", "-g", "daemon off;"]
+# Expone el puerto 443 para HTTPS
+EXPOSE 443
+
+# El contenedor iniciará automáticamente con la configuración por defecto de la imagen base
+
 
