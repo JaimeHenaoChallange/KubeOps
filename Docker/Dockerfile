@@ -1,5 +1,5 @@
-# Usa la imagen oficial de nginx:alpine para ARM
-FROM arm64v8/ubuntu
+# Usa la imagen oficial de nginx:alpine para ARM64
+FROM arm64v8/nginx:alpine
 
 # Copia el archivo index.html al directorio de trabajo en la imagen
 COPY index.html /usr/share/nginx/html/
@@ -9,6 +9,7 @@ EXPOSE 80
 
 # Comando para iniciar Nginx cuando se ejecute el contenedor
 CMD ["nginx", "-g", "daemon off;"]
+
 
 
 
