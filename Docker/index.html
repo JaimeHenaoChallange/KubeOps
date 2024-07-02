@@ -1,16 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Hello World Kantox</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola Mundo</title>
 </head>
 <body>
-    <h1>Hello World, Kantox!</h1>
-    <h2>By Jaime Andres Henao A</h2>
-    <h2>From Sebastian Alvarez-Globant</h2>
-    <h3>Barcelona</h3>
-    <h3>KubeOps</h3>
-    <h4>Cluster K8s VM</h4>
-    <h4>Prueba 06/03/2024</h4>
-    <h5>Prueba Grafana-prometheus</h5>
+    <h1>Hola Mundo!</h1>
+    <p>Fecha actual: <strong id="fecha"></strong></p>
+    <p>Tu dirección IP: <strong id="ip"></strong></p>
+
+    <script>
+        // Obtener la fecha actual
+        var fechaActual = new Date();
+        var fechaElemento = document.getElementById('fecha');
+        fechaElemento.textContent = fechaActual.toLocaleString();
+
+        // Obtener la dirección IP del cliente
+        fetch('https://api64.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                var ipElemento = document.getElementById('ip');
+                ipElemento.textContent = data.ip;
+            })
+            .catch(error => {
+                console.error('Error al obtener la dirección IP:', error);
+            });
+    </script>
 </body>
 </html>
+
