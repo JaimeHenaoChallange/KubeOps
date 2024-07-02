@@ -1,5 +1,5 @@
 # Usa la imagen oficial de nginx:alpine compatible con ARM
-FROM --platform=$TARGETPLATFORM nginx:alpine
+FROM --platform=$TARGETPLATFORM nginx:alpine:latest
 
 # Copia el archivo index.html al directorio de trabajo en la imagen
 COPY index.html /usr/share/nginx/html/
