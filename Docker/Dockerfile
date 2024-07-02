@@ -1,5 +1,5 @@
 # Usa la imagen base de Apache HTTP Server
-FROM httpd:latest
+FROM arm64v8/httpd
 
 # Copia el archivo index.html al directorio de trabajo en la imagen
 COPY index.html /usr/local/apache2/htdocs/
