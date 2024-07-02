@@ -1,5 +1,5 @@
 # Usa la imagen oficial de nginx:alpine para ARM
-FROM arm64v8/nginx:alpine
+FROM arm64v8/ubuntu
 
 # Copia el archivo index.html al directorio de trabajo en la imagen
 COPY index.html /usr/share/nginx/html/
