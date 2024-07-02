@@ -1,16 +1,17 @@
-# Usa la imagen oficial d3fk/https-redirect
-FROM d3fk/https-redirect:latest
+# Usa la imagen oficial balenalib/aarch64-alpine-node
+FROM balenalib/aarch64-alpine-node:20240429
 
-# Establece las variables de entorno necesarias para la redirección
-ENV REDIRECT_FROM="http://*:*" \
-    REDIRECT_TO="https://yourdomain.com"
+# Instala Nginx en la imagen base
+RUN apk update && apk add nginx
+
+# Copia el archivo index.html al directorio de trabajo en la imagen
+COPY index.html /usr/share/nginx/html/
 
 # Expone el puerto 80 para HTTP
 EXPOSE 80
 
-# Expone el puerto 443 para HTTPS
-EXPOSE 443
+# Comando para iniciar Nginx cuando se ejecute el contenedor
+CMD ["nginx", "-g", "daemon off;"]
 
-# El contenedor iniciará automáticamente con la configuración por defecto de la imagen base
 
 
