@@ -1,22 +1,14 @@
-FROM node:18-alpine
+# Usa la imagen oficial de nginx:alpine para x86_64
+FROM nginx:alpine
 
-# Establece el directorio de trabajo
-WORKDIR /app
+# Copia el archivo index.html al directorio de trabajo en la imagen
+COPY index.html /usr/share/nginx/html/
 
-# Copia los archivos de package.json y package-lock.json
-COPY package*.json ./
+# Puerto en el que escuchará Nginx
+EXPOSE 80
 
-# Instala las dependencias
-RUN npm install
-
-# Copia el resto de los archivos de la aplicación
-COPY . .
-
-# Expone el puerto de la aplicación
-EXPOSE 3000
-
-# Define el comando de inicio
-CMD ["npm", "start"]
+# Comando para iniciar Nginx cuando se ejecute el contenedor
+CMD ["nginx", "-g", "daemon off;"]
 
 
 
