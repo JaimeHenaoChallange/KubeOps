@@ -1,17 +1,24 @@
-# Usa la imagen oficial balenalib/aarch64-alpine-node
+# Usa la imagen base balenalib
 FROM balenalib/aarch64-alpine-node:20240429
 
-# Instala Nginx en la imagen base
-RUN apk update && apk add nginx
+# Establece el directorio de trabajo
+WORKDIR /app
 
-# Copia el archivo index.html al directorio de trabajo en la imagen
-COPY index.html /usr/share/nginx/html/
+# Copia el package.json y el package-lock.json (si existe)
+COPY package*.json ./
 
-# Expone el puerto 80 para HTTP
-EXPOSE 80
+# Instala las dependencias
+RUN npm install
 
-# Comando para iniciar Nginx cuando se ejecute el contenedor
-CMD ["nginx", "-g", "daemon off;"]
+# Copia el resto de los archivos de la aplicación
+COPY . .
+
+# Expon el puerto de la aplicación
+EXPOSE 3000
+
+# Comando para ejecutar la aplicación
+CMD ["node", "app.js"]
+
 
 
 
