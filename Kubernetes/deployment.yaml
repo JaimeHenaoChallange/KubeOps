@@ -16,10 +16,6 @@ spec:
     metadata:
       labels:
         app: hw
-      annotations:
-        notifications.argoproj.io/subscribe.on-sync-succeeded.slack: argocdnotification1
-        notifications.argoproj.io/subscribe.on-sync-failed.slack: argocdnotification1
-        notifications.argoproj.io/subscribe.on-health-degraded.slack: argocdnotification1
     spec:
       containers:
       - name: hw-container
