@@ -99,7 +99,7 @@ Instalación con Helm Chart y gestion desde CLI
 
     helm repo add argo https://argoproj.github.io/argo-helm
 
-   2.1 Podemios verificar mas versiones de helm
+   2.1 Podemos verificar mas versiones de helm
 
        helm search repo argo/argo-cd --versions
 
