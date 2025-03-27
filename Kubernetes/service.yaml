@@ -9,4 +9,6 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 80
-  type: NodePort  # Cambiado a NodePort para Minikube
+  type: NodePort
+  nodeport: 30131
+  
