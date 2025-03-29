@@ -8,8 +8,8 @@ COPY index.html /usr/local/apache2/htdocs/
 EXPOSE 80
 
 # Comando para iniciar Apache cuando se ejecute el contenedor
-CMD ["false"]
-#CMD ["httpd", "-D", "FOREGROUND"]
+#CMD ["false"] # -- habilitar para poner artefacto en degraded y comentra el siguiente
+CMD ["httpd", "-D", "FOREGROUND"]
 
 
 
