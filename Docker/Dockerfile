@@ -8,7 +8,8 @@ COPY index.html /usr/local/apache2/htdocs/
 EXPOSE 80
 
 # Comando para iniciar Apache cuando se ejecute el contenedor
-CMD ["httpd", "-D", "FOREGROUND"]
+CMD ["false"]
+#CMD ["httpd", "-D", "FOREGROUND"]
 
 
 
