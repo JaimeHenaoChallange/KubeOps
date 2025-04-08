@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
       - name: hw-container
-        image: jaimehenao8126/kubeops:59ce8caa4303992c0196d648c2648c9e27c04885
+        image: jaimehenao8126/kubeops:75cb4014f7475a77f66df7c953de9e8a1ba930ca
         ports:
         - containerPort: 80
