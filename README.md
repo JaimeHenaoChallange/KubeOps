@@ -168,7 +168,7 @@ Instalación con Helm Chart y gestion desde CLI
           --src https://github.com/JaimeHenaoChallange/app-2.git \
           --src https://github.com/JaimeHenaoChallange/backend.git \
           --src https://github.com/JaimeHenaoChallange/frontend.git \
-          --dest https://kubernetes.default.svc,poc \
+          --dest https://kubernetes.default.svc,poc,argocd \
           --allow-namespaced-resource kuma.io/TrafficRoute \
           --allow-namespaced-resource kuma.io/TrafficPermission \
           --allow-namespaced-resource kuma.io/TrafficTrace \
