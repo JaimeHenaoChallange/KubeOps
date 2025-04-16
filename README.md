@@ -144,13 +144,23 @@ Instalación con Helm Chart y gestion desde CLI
 
 12.	Creamos un proyecto de pruebas para kantox en el que solo se puedan crear aplicaciones en el namespace "kantox" y con determinado repositorio de código
 
-    argocd proj create kubeops -d https://kubernetes.default.svc,kubeops -s https://github.com/JaimeHenaoChallange/KubeOps.git
+    a. Para un solo repo --
+   	    argocd proj create kubeops -d https://kubernetes.default.svc,kubeops -s https://github.com/JaimeHenaoChallange/KubeOps.git
+   	b. para varios repos --
+   	    argocd proj create kuma-poc \
+          --description "POC de instalación, configuración y upgrade de Kuma Service Mesh" \
+          --src https://github.com/JaimeHenaoChallange/KubeOps.git \
+          --src https://github.com/JaimeHenaoChallange/app-1.git \
+          --src https://github.com/JaimeHenaoChallange/app-2.git \
+          --src https://github.com/JaimeHenaoChallange/backend.git \
+          --src https://github.com/JaimeHenaoChallange/frontend.git \
+          --dest https://kubernetes.default.svc,poc
 
-13.	Creamos el Namespace "kubeops" que será el que usaremos para desplegar las aplicaciones
+14.	Creamos el Namespace "kubeops" que será el que usaremos para desplegar las aplicaciones
 
     kubectl create ns kubeops
 
-14.	Ahora creamos nuestra primera aplicación de pruebas en el proyecto que hemos creado anteriormente
+15.	Ahora creamos nuestra primera aplicación de pruebas en el proyecto que hemos creado anteriormente
 
     argocd app create hello-world-kantox-kubeops \
     --repo https://github.com/JaimeHenaoChallange/KubeOps.git \
@@ -161,15 +171,15 @@ Instalación con Helm Chart y gestion desde CLI
     --project kubeops
 
 
-15.	Esperamos que sincronice la app de argocd:
+16.	Esperamos que sincronice la app de argocd:
 
     ![argocd](doc/app_kube.png)
 
-16.	Verificamos el svc de la app creada para ver le puerto (kubectl get svc -n kubeops):
+17.	Verificamos el svc de la app creada para ver le puerto (kubectl get svc -n kubeops):
 
     ![argocd](doc/app_kube-svc.png)
 
-17.	Realizamos un port-forward para verificar que la app se ve bien:
+18.	Realizamos un port-forward para verificar que la app se ve bien:
 
     ![argocd](doc/app_kube-svc1.png)
 
