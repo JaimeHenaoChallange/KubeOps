@@ -150,7 +150,7 @@ Instalación con Helm Chart y gestion desde CLI
    	
    	b. para varios repos:
    	
-   	    argocd proj create kuma-poc \
+   	    argocd proj create poc \
           --description "POC de instalación, configuración y upgrade de Kuma Service Mesh" \
           --src https://github.com/JaimeHenaoChallange/KubeOps.git \
           --src https://github.com/JaimeHenaoChallange/app-1.git \
@@ -161,7 +161,7 @@ Instalación con Helm Chart y gestion desde CLI
 
     c. Para varios repos y configuracion para kuma:
 
-        argocd proj create kuma-poc \
+        argocd proj create poc \
           --description "POC de instalación, configuración y upgrade de Kuma Service Mesh" \
           --src https://github.com/JaimeHenaoChallange/KubeOps.git \
           --src https://github.com/JaimeHenaoChallange/app-1.git \
@@ -176,6 +176,33 @@ Instalación con Helm Chart y gestion desde CLI
           --allow-namespaced-resource kuma.io/FaultInjection \
           --allow-namespaced-resource kuma.io/Retry \
           --allow-namespaced-resource kuma.io/RateLimit
+   	
+   	d. con mas funcionaledades (secrets, services, deployments, mas destinos):
+
+        argocd proj create poc \
+          --description "POC de instalación, configuración y upgrade de Kuma Service Mesh" \
+          --src https://github.com/JaimeHenaoChallange/KubeOps.git \
+          --src https://github.com/JaimeHenaoChallange/app-1.git \
+          --src https://github.com/JaimeHenaoChallange/app-2.git \
+          --src https://github.com/JaimeHenaoChallange/backend.git \
+          --src https://github.com/JaimeHenaoChallange/frontend.git \
+          --dest https://kubernetes.default.svc,poc \
+          --dest https://kubernetes.default.svc,argocd \
+          \
+          --allow-namespaced-resource ""/Service \
+          --allow-namespaced-resource apps/Deployment \
+          --allow-namespaced-resource ""/ConfigMap \
+          --allow-namespaced-resource ""/Secret \
+          --allow-namespaced-resource networking.k8s.io/Ingress \
+          \
+          --allow-namespaced-resource kuma.io/TrafficRoute \
+          --allow-namespaced-resource kuma.io/TrafficPermission \
+          --allow-namespaced-resource kuma.io/TrafficTrace \
+          --allow-namespaced-resource kuma.io/HealthCheck \
+          --allow-namespaced-resource kuma.io/FaultInjection \
+          --allow-namespaced-resource kuma.io/Retry \
+          --allow-namespaced-resource kuma.io/RateLimit
+
 
 14.	Creamos el Namespace "kubeops" que será el que usaremos para desplegar las aplicaciones
 
