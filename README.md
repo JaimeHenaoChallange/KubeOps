@@ -144,9 +144,12 @@ Instalación con Helm Chart y gestion desde CLI
 
 12.	Creamos un proyecto de pruebas para kantox en el que solo se puedan crear aplicaciones en el namespace "kantox" y con determinado repositorio de código
 
-    a. Para un solo repo --
+    a. Para un solo repo:
+   	
    	    argocd proj create kubeops -d https://kubernetes.default.svc,kubeops -s https://github.com/JaimeHenaoChallange/KubeOps.git
-   	b. para varios repos --
+   	
+   	b. para varios repos:
+   	
    	    argocd proj create kuma-poc \
           --description "POC de instalación, configuración y upgrade de Kuma Service Mesh" \
           --src https://github.com/JaimeHenaoChallange/KubeOps.git \
@@ -155,6 +158,24 @@ Instalación con Helm Chart y gestion desde CLI
           --src https://github.com/JaimeHenaoChallange/backend.git \
           --src https://github.com/JaimeHenaoChallange/frontend.git \
           --dest https://kubernetes.default.svc,poc
+
+    c. Para varios repos y configuracion para kuma:
+
+        argocd proj create kuma-poc \
+          --description "POC de instalación, configuración y upgrade de Kuma Service Mesh" \
+          --src https://github.com/JaimeHenaoChallange/KubeOps.git \
+          --src https://github.com/JaimeHenaoChallange/app-1.git \
+          --src https://github.com/JaimeHenaoChallange/app-2.git \
+          --src https://github.com/JaimeHenaoChallange/backend.git \
+          --src https://github.com/JaimeHenaoChallange/frontend.git \
+          --dest https://kubernetes.default.svc,poc \
+          --allow-namespaced-resource kuma.io/TrafficRoute \
+          --allow-namespaced-resource kuma.io/TrafficPermission \
+          --allow-namespaced-resource kuma.io/TrafficTrace \
+          --allow-namespaced-resource kuma.io/HealthCheck \
+          --allow-namespaced-resource kuma.io/FaultInjection \
+          --allow-namespaced-resource kuma.io/Retry \
+          --allow-namespaced-resource kuma.io/RateLimit
 
 14.	Creamos el Namespace "kubeops" que será el que usaremos para desplegar las aplicaciones
 
