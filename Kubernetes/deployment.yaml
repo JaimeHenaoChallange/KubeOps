@@ -2,6 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hw-deploy
+  namespace: poc
+  labels:
+    app: kubeops
+    kuma.io/service: kubeops # Etiqueta para Kuma
 spec:
   replicas: 2  # Ajusta el número de replicas según tus necesidades
   strategy:
@@ -16,6 +20,7 @@ spec:
     metadata:
       labels:
         app: hw
+        kuma.io/service: kubeops # Etiqueta para Kuma
     spec:
       containers:
       - name: hw-container
