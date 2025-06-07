@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hw-deploy
-  namespace: resources-review
+  namespace: resources
   labels:
     app: kubeops
     kuma.io/service: kubeops # Etiqueta para Kuma
